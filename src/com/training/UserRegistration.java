@@ -12,7 +12,7 @@ public class UserRegistration {
 	private String mobileNo;
 	private String mobileNoPattern="(^\\+)([0-9]{2,3})(\\s)"+"[0-9]{10}$";
 	private String password;
-	private String passwordPatternRule1="(?=.{8,})(?=.*[A-Z]).*$";
+	private String passwordPatternRule1="(?=.{8,})(?=.*[A-Z])(?=.*\\d).*$";
 	
 	public String getPassword() {
 		return password;
@@ -101,7 +101,7 @@ public class UserRegistration {
 		UR.setLastName("Kol");
 		UR.setEmail("abc.xyz@bl.co.in");
 		UR.setMobileNo("+91 9804809458");
-		UR.setPassword("fhd^@63u674R");
+		UR.setPassword("^@8Aghhh");
 		System.out.println(UR);
 	}
 
