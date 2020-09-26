@@ -12,7 +12,7 @@ public class UserRegistration {
 	private String mobileNo;
 	private String mobileNoPattern="(^\\+)([0-9]{2,3})(\\s)"+"[0-9]{10}$";
 	private String password;
-	private String passwordPatternRule1=".{8,}";
+	private String passwordPatternRule1="(?=.{8,})(?=.*[A-Z]).*$";
 	
 	public String getPassword() {
 		return password;
@@ -86,9 +86,9 @@ public class UserRegistration {
 		return matcher.matches();
 	}
 	public boolean validatePassword(String password) {
-		Pattern pattern1=Pattern.compile(passwordPatternRule1);
-		Matcher matcher=pattern1.matcher(password);
-		return matcher.matches();
+		Pattern pattern=Pattern.compile(passwordPatternRule1);
+		Matcher matcher=pattern.matcher(password);
+			return matcher.matches();
 	}
 	@Override
 	public String toString() {
@@ -101,7 +101,7 @@ public class UserRegistration {
 		UR.setLastName("Kol");
 		UR.setEmail("abc.xyz@bl.co.in");
 		UR.setMobileNo("+91 9804809458");
-		UR.setPassword("g$%^&&78");
+		UR.setPassword("fhd^@63u674R");
 		System.out.println(UR);
 	}
 
