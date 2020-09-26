@@ -11,7 +11,19 @@ public class UserRegistration {
 	private String emailPattern="(^[a-zA-Z0-9]+)"+"([. + _ -]?[a-zA-Z0-9]*)"+"[^. + _ -]@[a-zA-Z0-9]+"+"(\\.[a-zA-Z]{2,4})"+"(\\.[a-zA-Z]{2})?";
 	private String mobileNo;
 	private String mobileNoPattern="(^\\+)([0-9]{2,3})(\\s)"+"[0-9]{10}$";
+	private String password;
+	private String passwordPatternRule1=".{8,}";
 	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		if(this.validatePassword(password))
+			this.password=password;
+			else
+				System.out.println("Password is Invalid !");
+	}
 	public String getMobileNo() {
 		return mobileNo;
 	}
@@ -73,9 +85,14 @@ public class UserRegistration {
 		Matcher matcher=pattern2.matcher(lastname);
 		return matcher.matches();
 	}
+	public boolean validatePassword(String password) {
+		Pattern pattern1=Pattern.compile(passwordPatternRule1);
+		Matcher matcher=pattern1.matcher(password);
+		return matcher.matches();
+	}
 	@Override
 	public String toString() {
-		return "FirstName = " + firstName+" LastName = "+lastName+" Email = "+email+" Mobile No = "+mobileNo;
+		return "FirstName = " + firstName+" LastName = "+lastName+" Email = "+email+" Mobile No = "+mobileNo+" Password = "+password;
 	}
 
 	public static void main(String[] args) {
@@ -84,6 +101,7 @@ public class UserRegistration {
 		UR.setLastName("Kol");
 		UR.setEmail("abc.xyz@bl.co.in");
 		UR.setMobileNo("+91 9804809458");
+		UR.setPassword("g$%^&&78");
 		System.out.println(UR);
 	}
 
