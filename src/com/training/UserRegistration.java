@@ -9,7 +9,20 @@ public class UserRegistration {
 	private String lastNamePattern="^[A-Z][a-z]{2,}";
 	private String email;
 	private String emailPattern="(^[a-zA-Z0-9]+)"+"([. + _ -]?[a-zA-Z0-9]*)"+"[^. + _ -]@[a-zA-Z0-9]+"+"(\\.[a-zA-Z]{2,4})"+"(\\.[a-zA-Z]{2})?";
+	private String mobileNo;
+	private String mobileNoPattern="(^\\+)([0-9]{2,3})(\\s)"+"[0-9]{10}$";
 	
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		if(this.validateMobileNo(mobileNo))
+			this.mobileNo = mobileNo;
+			else
+				System.out.println("Mobile Number is Invalid !");
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -40,6 +53,11 @@ public class UserRegistration {
 		else
 			System.out.println("First Name is Invalid !");
 	}
+	public boolean validateMobileNo(String Mob) {
+		Pattern pattern1=Pattern.compile(mobileNoPattern);
+		Matcher matcher=pattern1.matcher(Mob);
+		return matcher.matches();
+	}
 	public boolean validateEmail(String email) {
 		Pattern pattern1=Pattern.compile(emailPattern);
 		Matcher matcher=pattern1.matcher(email);
@@ -57,7 +75,7 @@ public class UserRegistration {
 	}
 	@Override
 	public String toString() {
-		return "FirstName = " + firstName+" LastName = "+lastName+" Email = "+email;
+		return "FirstName = " + firstName+" LastName = "+lastName+" Email = "+email+" Mobile No = "+mobileNo;
 	}
 
 	public static void main(String[] args) {
@@ -65,6 +83,7 @@ public class UserRegistration {
 		UR.setFirstName("Pooooo");
 		UR.setLastName("Kol");
 		UR.setEmail("abc.xyz@bl.co.in");
+		UR.setMobileNo("+91 9804809458");
 		System.out.println(UR);
 	}
 
